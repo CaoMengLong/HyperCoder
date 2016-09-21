@@ -1,0 +1,21 @@
+{
+  "name": "HyperCoder",
+  "homepage": "https://github.com/CaoMengLong/HyperCoder",
+  "authors": [
+    "caogt <138888611@qq.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "amazeui": "^2.7.2"
+  }
+}
