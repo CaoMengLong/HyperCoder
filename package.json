@@ -1,0 +1,14 @@
+{
+  "name": "HyperCoder",
+  "version": "0.0.1",
+  "main": "view/connect.html",
+  "window": {
+    "title": "HyperCoder",
+
+    "frame": true,
+    //"show_in_taskbar":true,
+    "width": 800,
+    "height": 500,
+    "position": "center"
+  }
+}
