@@ -1,7 +1,7 @@
 /**
  * Created by Myron on 2016/9/21.
  */
-var hcApp=angular.module('hc-app',['ngRoute']);
+var hcApp=angular.module('hc-app',['ngRoute','ui.ace']);
 var gui = require('nw.gui');
 var win = gui.Window.get();
 win.maximize();
@@ -19,7 +19,7 @@ hcApp.config(['$routeProvider', function ($routeProvider) {
             templateUrl: configuration.appPartialPath + 'choice.html',
             controller: 'ChoiceCtrl'
         })
-        .when('/table/:id', {
+        .when('/table/:name', {
             templateUrl: configuration.appPartialPath + 'table.html',
             controller: 'TableCtrl'
         })

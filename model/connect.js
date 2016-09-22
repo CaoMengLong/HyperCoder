@@ -21,12 +21,10 @@ hcApp.controller('ConnectCtrl', ['$scope',
                     $modal.modal('toggle');
                     return;
                 }
-
                 localStorage.server=$scope.server;
                 localStorage.port=$scope.port;
                 localStorage.username=$scope.username;
                 localStorage.password=$scope.password;
-
                 console.log('[connection connect]  succeed!');
                 //$location.path("/main");
                 //$location.url(‘/test/1#?a=1#hash‘);

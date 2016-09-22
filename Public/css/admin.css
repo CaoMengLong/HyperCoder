@@ -372,3 +372,12 @@ gallery.html css
   width: 200px;
   margin: 0 auto;
 }
+
+.tableName{
+  font-weight: bold;
+}
+.tableComment{
+  color: #5c5c5c;
+  font-size: 10pt;
+}
+.ace_editor { height: 800px; }

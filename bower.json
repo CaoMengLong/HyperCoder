@@ -19,6 +19,8 @@
     "amazeui": "^2.7.2",
     "angular": "angularjs#1.5.8",
     "jquery": "2.2.0",
-    "angular-route": "^1.5.8"
+    "angular-route": "^1.5.8",
+    "ace-builds": "^1.2.5",
+    "angular-ui-ace": "^0.2.3"
   }
 }
