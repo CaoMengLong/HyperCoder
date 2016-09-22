@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" ng-app='hc-app'>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,67 +7,83 @@
     <meta name="keywords" content="">
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
-    <title>连接数据库</title>
+    <title>Now connect to MySQL</title>
     <link rel="stylesheet" href="/bower_components/amazeui/dist/css/amazeui.min.css">
-    <link rel="stylesheet" href="/bower_components/amazeui/dist/css/app.css">
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/amazeui/dist/js/amazeui.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
 </head>
 <body>
+<style>
+    .header {
+        text-align: center;
+    }
+    .header h1 {
+        font-size: 200%;
+        color: #333;
+        margin-top: 30px;
+    }
+    .header p {
+        font-size: 14px;
+    }
+</style>
 
-<div class="am-center">
-    <h1>HyperCoder</h1>
+
+
+<div class="header">
+    <div class="am-g">
+        <h1>HyperCoder</h1>
+        <p>Integrated Development Environment<br/>
+             </p>
+    </div>
+    <hr />
+</div>
+<div class="am-g"  ng-controller="ConnectCtrl">
+    <div class="am-u-lg-4 am-u-md-6 am-u-sm-centered">
+        <h3>Now connect to MySQL</h3>
+        <hr>
+
+
+        <form method="post" class="am-form">
+            <label >server:</label>
+            <input type="text" name="server"  value="" ng-model="server">
+            <br>
+            <label >port:</label>
+            <input type="text" name="port"  value="" ng-model="port">
+            <br>
+            <label >username:</label>
+            <input type="text" name="username"  value="" ng-model="username">
+            <br>
+            <label >password:</label>
+            <input type="password" name="password"  value="" ng-model="password">
+            <br>
+            <br />
+            <div class="am-cf">
+                <button type="button" class="am-btn am-btn-primary am-btn-block" ng-click="connectCheck()">Connect</button>
+            </div>
+        </form>
+        <hr>
+        <p>© 2016 CaoMengLong@GitHub, Inc. Licensed under MIT license.</p>
+    </div>
 </div>
 
-
-<div data-am-widget="list_news" class="am-list-news am-list-news-default" >
-    <!--列表标题-->
-    <div class="am-list-news-hd am-cf">
-        <!--带更多链接-->
-        <a href="##" class="">
-            <h2>栏目标题</h2>
-            <span class="am-list-news-more am-fr">更多 &raquo;</span>
-        </a>
+<!---------连接失败------>
+<div class="am-modal am-modal-alert" tabindex="-1" id="failed-alert">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">HyperCoder</div>
+        <div class="am-modal-bd">
+            MySQL connection failed.
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">Cancel</span>
+        </div>
     </div>
-
-    <div class="am-list-news-bd">
-        <ul class="am-list">
-
-            <li class="am-g am-list-item-dated">
-                <a href="##" class="am-list-item-hd ">我很囧，你保重....晒晒旅行中的那些囧！</a>
-
-                <span class="am-list-date">2013-09-18</span>
-
-
-            </li>
-            <li class="am-g am-list-item-dated">
-                <a href="##" class="am-list-item-hd ">我最喜欢的一张画</a>
-
-                <span class="am-list-date">2013-10-14</span>
-
-
-            </li>
-            <li class="am-g am-list-item-dated">
-                <a href="##" class="am-list-item-hd ">“你的旅行，是什么颜色？” 晒照片，换北欧梦幻极光之旅！</a>
-
-                <span class="am-list-date">2013-11-18</span>
-
-
-            </li>
-        </ul>
-    </div>
-
 </div>
-
 <!--在这里编写你的代码-->
 
-<!--[if (gte IE 9)|!(IE)]><!-->
-<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-<!--<![endif]-->
-<!--[if lte IE 8 ]>
-<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="/bower_components/amazeui/dist/js/amazeui.ie8polyfill.min.js"></script>
-<![endif]-->
-<script src="/bower_components/amazeui/dist/js/amazeui.min.js"></script>
+<script src="/model/app.js"></script>
+<script src="/model/connect.js"></script>
 <script type="application/javascript">
     var win = nw.Window.get();
     win.showDevTools();

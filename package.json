@@ -1,14 +1,22 @@
 {
-  "name": "HyperCoder",
-  "version": "0.0.1",
+  "name": "hypercoder",
+  "version": "1.0.0",
+  "description": "",
   "main": "view/connect.html",
-  "window": {
-    "title": "HyperCoder",
-
-    "frame": true,
-    //"show_in_taskbar":true,
-    "width": 800,
-    "height": 500,
-    "position": "center"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaoMengLong/HyperCoder.git"
+  },
+  "author": "138888611@qq.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CaoMengLong/HyperCoder/issues"
+  },
+  "homepage": "https://github.com/CaoMengLong/HyperCoder#readme",
+  "dependencies": {
+    "mysql": "^2.11.1"
   }
 }
