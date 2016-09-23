@@ -1,3 +1,4 @@
+var hcApp=angular.module('hc-app',[]);
 var mysql  = require('mysql');  //开始使用mysql
 
 hcApp.controller('ConnectCtrl', ['$scope',

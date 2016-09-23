@@ -1,6 +1,9 @@
+var fs= require('fs');
+
 hcApp.controller('TableCtrl', ['$scope',
-    '$http','$route','$routeParams','TableFactory',
-    function ($scope, $http,$route,$routeParams,tableFactory) {
+    '$http','$route','$routeParams','TableFactory','ThinkPHPFactory',
+    function ($scope, $http,$route,$routeParams,tableFactory,thinkPHPFactory) {
+        var AceEditor=null;
         $scope.table={name:$route.current.params.name};
         $scope.FieldList=new Array();
         $scope.fieldNameArray=new Array();
@@ -52,11 +55,23 @@ hcApp.controller('TableCtrl', ['$scope',
             $scope.fieldNameArrayStr = $scope.fieldNameArray.join(",");
             $scope.fieldNameArray = new Array();
 
+            var str="<?php            namespace Home\Controller;            use Think\Controller;?>"
+
+            thinkPHPFactory.getControllerCode($scope.table.name).then(function(data){
+                AceEditor.setValue(data);
+            });
+
+
+
+
         };
 
         $scope.aceLoaded = function(_editor) {
             // Options
             _editor.setReadOnly(false);
+            _editor.getSession().setUseWrapMode(true);
+            _editor.renderer.setShowGutter(true);
+            AceEditor=_editor;
 
         };
 
