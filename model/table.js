@@ -11,8 +11,9 @@ hcApp.controller('TableCtrl', ['$scope',
         $scope.fieldNameParamsStr=null;
         $scope.checkeboxFlag=false;
         $scope.DB_PREFIX= $scope.table.name.split("_")[0]+"_";
-        tableFactory.getFieldList($scope.table.name).then(function(data){
+        tableFactory.getFieldList(localStorage.databasename,$scope.table.name).then(function(data){
             $scope.FieldList=data;
+            console.log(data);
         })
 
         $scope.CheckedAll=function(){
@@ -94,7 +95,7 @@ hcApp.controller('TableCtrl', ['$scope',
 
 hcApp.factory('TableFactory',['$http','$q',function($http,$q){
     var service={};
-    service.getFieldList=function(tablename){
+    service.getFieldList=function(databasename,tablename){
         var deferred=$q.defer();
         var connection = mysql.createConnection({
             host   : localStorage.server,
@@ -103,11 +104,12 @@ hcApp.factory('TableFactory',['$http','$q',function($http,$q){
             password : localStorage.password
         });
         var result= new Array();
+        var sqlstr="select COLUMN_NAME,COLUMN_COMMENT from information_schema.columns where table_schema='"+databasename+"' and table_name='"+tablename+"'";
+        console.log(sqlstr);
         connection.connect();
-        connection.query('select COLUMN_NAME,COLUMN_COMMENT  from information_schema.COLUMNS where table_name = "'+tablename+'";', function(err, rows) {
+        connection.query(sqlstr, function(err, rows) {
 
-            console.log(rows[0]);
-            console.log(rows.length);
+
             for (index in rows)
             {
                 var name=rows[index].COLUMN_NAME;
@@ -117,6 +119,7 @@ hcApp.factory('TableFactory',['$http','$q',function($http,$q){
                     comment:comment,
                     checked:false
                 }
+
             }
             deferred.resolve(result);
         });

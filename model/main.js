@@ -22,6 +22,7 @@ hcApp.controller('MainCtrl', ['$scope',
             mainFactory.getTablesByDataBaseName(dataBasename).then(function(data){
                 $scope.DataBase.tableList=data;
                 $scope.DataBase.name=dataBasename;
+                localStorage.databasename=dataBasename;
             });
         }
 
