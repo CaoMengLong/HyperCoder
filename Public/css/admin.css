@@ -380,4 +380,21 @@ gallery.html css
   color: #5c5c5c;
   font-size: 10pt;
 }
-.ace_editor { height: 800px; }
+.ace_editor { height: 500px;}
+
+
+#fieldbox{
+  overflow:auto;overflow-x: hidden;
+  max-height: 500px;
+}
+#fieldbox .box{
+  height: 50px;
+  border-right: 1px solid rgb(204, 204, 204);
+}
+#fieldbox .box .fieldtip{
+  font-size: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #5c5c5c;
+}

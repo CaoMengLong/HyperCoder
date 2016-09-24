@@ -10,12 +10,13 @@ hcApp.controller('TableCtrl', ['$scope',
         $scope.fieldNameArrayStr=null;
         $scope.fieldNameParamsStr=null;
         $scope.checkeboxFlag=false;
-
+        $scope.DB_PREFIX= $scope.table.name.split("_")[0]+"_";
         tableFactory.getFieldList($scope.table.name).then(function(data){
             $scope.FieldList=data;
         })
 
         $scope.CheckedAll=function(){
+
             for(var i=0;i<$scope.FieldList.length;i++){
                 $scope.FieldList[i]['checked']=$scope.checkeboxFlag;
             };
@@ -24,7 +25,7 @@ hcApp.controller('TableCtrl', ['$scope',
 
         $scope.Checked=function(){
             $scope.afterCreat(); //进行先加工 组织待加工字段
-            console.log($scope.fieldNameArrayStr);
+
 
             var fieldarray=new Array();
             fieldarray=$scope.fieldNameArrayStr.split(",");
@@ -35,9 +36,7 @@ hcApp.controller('TableCtrl', ['$scope',
             };
             fieldarrayparams=fieldarrayparams.substring(0,fieldarrayparams.length-1);
             $scope.fieldNameParamsStr=fieldarrayparams;
-            console.log(fieldarrayparams);
 
-            $scope.createCode();
         };
 
         //字段文字
@@ -48,26 +47,31 @@ hcApp.controller('TableCtrl', ['$scope',
                     $scope.fieldNameArray.push($scope.FieldList[i]['name']);
                 }
             }
-
             $scope.fieldNameArrayStr="";
             $scope.fieldNameArrayStr = $scope.fieldNameArray.join(",");
-
-
 
         };
 
 
-        $scope.createCode=function(){
+        $scope.GenerateCode=function(mold){
             var data={
-                DB_PREFIX:"gr_",
+                DB_PREFIX:$scope.DB_PREFIX,
                 TableName:$scope.table.name,
                 FieldNameArray:$scope.fieldNameArray,
                 ParamsStr:$scope.fieldNameParamsStr
             }
-            thinkPHPFactory.getControllerCode(data).then(function(data){
-                AceEditor.setValue(data);
-            });
+            if(mold="OTC"){
+                thinkPHPFactory.getControllerCode(data).then(function(data){
+                    AceEditor.setValue(data);
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                });
+            }
         }
+
+
 
         $scope.aceLoaded = function(_editor) {
             // Options

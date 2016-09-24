@@ -1,91 +1,90 @@
-<div class="am-cf am-padding">
-    <div class="am-fl am-cf">
-        <strong class="am-text-primary am-text-lg" ng-bind="table.name"> </strong> /
-        <small>代码生成</small>
-    </div>
-</div>
-
-<div class="am-g">
-    <div class="am-u-md-12">
-        <div class="am-panel am-panel-default">
-            <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">代码生成<span
-                    class="am-icon-chevron-down am-fr"></span></div>
-            <div class="am-panel-bd am-collapse am-in" id="collapse-panel-1">
-                <form class="am-form">
-                    <fieldset>
-
-                        <div class="am-form-group">
-                            <label>字段选择</label><br/>
-                            <label class="am-checkbox-inline">
-                                <input type="checkbox" ng-model='checkeboxFlag' ng-click="CheckedAll()"
-                                       checked="checked"> 全选
-                            </label>
-                            <label class="am-checkbox-inline" ng-repeat="fl in FieldList">
-                                <input type="checkbox" ng-model='fl.checked' ng-click="Checked()"> {{fl.name}}
-                                {{fl.comment}}
-                            </label>
-                        </div>
-
-                        <div class="am-form-group">
-                            <label>待处理字段</label>
-                            <textarea class="" rows="5" ng-model='fieldNameArrayStr'></textarea>
-                        </div>
-
-                        <div class="am-form-group">
-                            <label>生成的参数</label>
-                            <textarea class="" rows="5" ng-model='fieldNameParamsStr'></textarea>
-                        </div>
-
-                    </fieldset>
-                </form>
-            </div>
+<header class="am-topbar" id="tableheader" style="margin-bottom: 0px;">
+    <h1 class="am-topbar-brand">
+        <a ng-bind="table.name"> </a>
+    </h1>
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+            data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+            class="am-icon-bars"></span></button>
+    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+        <div class="am-topbar-left">
+            <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" data-am-modal="{target: '#table-modal-1'}">
+                配置
+            </button>
+            <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" ng-click="GenerateCode('OTC')">
+                OT Controller
+            </button>
         </div>
-
     </div>
-
-</div>
-
-
-<div class="am-g">
-    <div class="am-u-md-12">
-        <div class="am-panel am-panel-default">
-            <div class="am-panel-hd am-cf"  data-am-collapse="{target: '#collapse-panel-2'}">代码生成<span
-                    class="am-icon-chevron-down am-fr"></span></div>
-            <div class="am-panel-bd am-collapse am-in" id="collapse-panel-2">
-                <div class="am-tabs" id="doc-my-tabs">
-                    <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
-                        <li class="am-active"><a href="">ThinkPHP</a></li>
-                        <li><a href="">OneThink</a></li>
-                        <li><a href="">窗外</a></li>
-                    </ul>
-                    <div class="am-tabs-bd">
-                        <div class="am-tab-panel am-active">
-                            <div ui-ace="{
+</header>
+<!----代码区域-->
+<div id="aceediter" ui-ace="{
   useWrapMode : true,
   showGutter: false,
   theme:'chrome',
   mode: 'php',
-  firstLineNumber: 5,
+  firstLineNumber: 1,
   onLoad: aceLoaded,
   onChange: aceChanged
-}">class IndexController extends Controller
-                            </div>
+}">Hello World !
+</div>
+
+
+<!-- 侧边栏内容 -->
+<div class="am-modal  am-modal-no-btn" tabindex="-1" id="table-modal-1">
+    <div class="am-modal-dialog" style="width: 1000px">
+        <div class="am-modal-hd">表结构设计
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <form class="am-form">
+                <div class="am-g" style="text-align: left;">
+
+                    <div class="am-u-md-8" id="fieldbox">
+                        <div class="am-form-group">
+                            <label>字段选择</label>
+                            <input type="checkbox" ng-model='checkeboxFlag' ng-click="CheckedAll()" checked="checked"> 全选<br/>
+                            <ul class="am-avg-sm-4 am-thumbnails">
+                                <li ng-repeat="fl in FieldList" class="box">
+                                    <div style=" height: 50px;">
+                                        <input type="checkbox" ng-model='fl.checked' ng-click="Checked()"><span style="font-weight: bold">{{fl.name}}</span>
+                                        <br/><i class="fieldtip">{{fl.comment}}</i>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="am-tab-panel">OneThink</div>
-                        <div class="am-tab-panel">...</div>
+
+
                     </div>
+
+                    <div class="am-u-md-4">
+                        <div class="am-form-group">
+                            <label>表前缀</label>
+                            <input type="text" ng-model='DB_PREFIX'/>
+                        </div>
+                        <div class="am-form-group">
+                            <label>待处理字段</label>
+                            <textarea class="" rows="5" ng-model='fieldNameArrayStr'></textarea>
+                        </div>
+                        <div class="am-form-group ">
+                            <label>生成的参数</label>
+                            <textarea class="" rows="5" ng-model='fieldNameParamsStr'></textarea>
+                        </div>
+                    </div>
+
                 </div>
 
-            </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
         </div>
     </div>
-
 </div>
-</div>
-
 
 <script>
-    $(function () {
-        $('#doc-my-tabs').tabs({noSwipe: 1});
-    })
+    resizeWindow();
+    function resizeWindow() {
+        var winH = $(window).height() - $('#tableheader').height() - 112;
+        $("#aceediter").css('height', winH + 'px');
+    }
 </script>
