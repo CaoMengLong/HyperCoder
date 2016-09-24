@@ -81,13 +81,22 @@
         </div>
     </div>
 </div>
+
+<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">Connecting to MySQL</div>
+        <div class="am-modal-bd">
+            <span class="am-icon-spinner am-icon-spin"></span>
+        </div>
+    </div>
+</div>
 <!--在这里编写你的代码-->
 
 <script src="/model/app.js"></script>
 <script src="/model/connect.js"></script>
 <script type="application/javascript">
     var win = nw.Window.get();
-    win.showDevTools();
+    //win.showDevTools();
 </script>
 </body>
 </html>

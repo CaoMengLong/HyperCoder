@@ -10,6 +10,8 @@ hcApp.controller('ConnectCtrl', ['$scope',
         $scope.password=localStorage.password;
         $scope.connectCheck=function(){
             var $modal = $('#failed-alert');
+            var $modalLoading = $('#my-modal-loading');
+            $modalLoading.modal('open');
             var connection = mysql.createConnection({
                 host   : $scope.server,
                 port : $scope.port,
@@ -19,6 +21,7 @@ hcApp.controller('ConnectCtrl', ['$scope',
             connection.connect(function(err){
                 if(err){
                     console.log('[query] - :'+err);
+                    $modalLoading.modal('close');
                     $modal.modal('toggle');
                     return;
                 }

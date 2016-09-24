@@ -13,7 +13,6 @@ hcApp.controller('TableCtrl', ['$scope',
         $scope.DB_PREFIX= $scope.table.name.split("_")[0]+"_";
         tableFactory.getFieldList(localStorage.databasename,$scope.table.name).then(function(data){
             $scope.FieldList=data;
-            console.log(data);
         })
 
         $scope.CheckedAll=function(){
