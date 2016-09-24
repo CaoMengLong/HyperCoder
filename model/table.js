@@ -37,14 +37,12 @@ hcApp.controller('TableCtrl', ['$scope',
             $scope.fieldNameParamsStr=fieldarrayparams;
             console.log(fieldarrayparams);
 
-            //indexFactory.getQueryFieldList($scope.fieldNameArrayStr).then(function(data){
-            //    $scope.requestStr=data.RequestStr;
-            //});
+            $scope.createCode();
         };
 
         //字段文字
         $scope.afterCreat=function(){
-
+            $scope.fieldNameArray = new Array();
             for(var i=0;i<$scope.FieldList.length;i++){
                 if($scope.FieldList[i]['checked']==true){
                     $scope.fieldNameArray.push($scope.FieldList[i]['name']);
@@ -53,18 +51,23 @@ hcApp.controller('TableCtrl', ['$scope',
 
             $scope.fieldNameArrayStr="";
             $scope.fieldNameArrayStr = $scope.fieldNameArray.join(",");
-            $scope.fieldNameArray = new Array();
-
-            var str="<?php            namespace Home\Controller;            use Think\Controller;?>"
-
-            thinkPHPFactory.getControllerCode($scope.table.name).then(function(data){
-                AceEditor.setValue(data);
-            });
-
 
 
 
         };
+
+
+        $scope.createCode=function(){
+            var data={
+                DB_PREFIX:"gr_",
+                TableName:$scope.table.name,
+                FieldNameArray:$scope.fieldNameArray,
+                ParamsStr:$scope.fieldNameParamsStr
+            }
+            thinkPHPFactory.getControllerCode(data).then(function(data){
+                AceEditor.setValue(data);
+            });
+        }
 
         $scope.aceLoaded = function(_editor) {
             // Options
