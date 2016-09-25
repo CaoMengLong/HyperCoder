@@ -77,7 +77,7 @@ TODO
 感谢阅读这份帮助文档。非专业文档写手，难免有疏忽，尽请谅解。
 
 
-  [1]: https://github.com/CaoMengLong/HyperCoder
+  [1]: http://pan.baidu.com/s/1boJdL4V
   [2]: http://nwjs.io/
   [3]: http://amazeui.org/
   [4]: http://www.angularjs.org/
