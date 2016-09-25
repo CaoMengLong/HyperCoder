@@ -12,7 +12,7 @@ hcApp.factory('ThinkPHPFactory',['$http','$q',function($http,$q){
     service.getControllerCode=function(data){
 
         var deferred=$q.defer();
-        var templatecode = fs.readFileSync('template/thinkphp/Controller.php','utf-8');
+        var templatecode = fs.readFileSync('template/OneThink/Controller.php','utf-8');
 
         var template=new Array();
         //类名的处理
@@ -41,7 +41,7 @@ hcApp.factory('ThinkPHPFactory',['$http','$q',function($http,$q){
 
     service.getViewIndexCode=function(data){
         var deferred=$q.defer();
-        var templatecode = fs.readFileSync('template/thinkphp/index.html','utf-8');
+        var templatecode = fs.readFileSync('template/OneThink/index.html','utf-8');
 
         var template=new Array();
         //类名的处理
@@ -73,7 +73,7 @@ hcApp.factory('ThinkPHPFactory',['$http','$q',function($http,$q){
     }
     service.getViewEditCode=function(data){
         var deferred=$q.defer();
-        var templatecode = fs.readFileSync('template/thinkphp/edit.html','utf-8');
+        var templatecode = fs.readFileSync('template/OneThink/edit.html','utf-8');
 
         var template=new Array();
         //类名的处理
@@ -110,7 +110,7 @@ hcApp.factory('ThinkPHPFactory',['$http','$q',function($http,$q){
     }
     service.getViewAddCode=function(data){
         var deferred=$q.defer();
-        var templatecode = fs.readFileSync('template/thinkphp/add.html','utf-8');
+        var templatecode = fs.readFileSync('template/OneThink/add.html','utf-8');
 
         var template=new Array();
         //类名的处理
