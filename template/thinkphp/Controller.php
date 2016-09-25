@@ -1,5 +1,5 @@
 <?php
-namespace Home\Controller;
+namespace Admin\Controller;
 use Think\Controller;
 use Org\Util;
 
@@ -8,7 +8,7 @@ use Org\Util;
  *
  * @author YourName
  */
-class @@classname@@Controller extends Controller {
+class @@classname@@Controller extends AdminController {
 
     /**
     * 列表
@@ -17,7 +17,7 @@ class @@classname@@Controller extends Controller {
     public function index(){
         $name = I('name');
         $map['name'] = array('like', '%' . (string) $name . '%');
-        $list = $this->lists('[[tablenoprfixname]]', $map);
+        $list = $this->lists('@@tablenoprfixname@@', $map);
         int_to_string($list);
         $this->assign('_list', $list);
         $this->meta_title = '列表页标题';
@@ -60,6 +60,8 @@ class @@classname@@Controller extends Controller {
                 $this->success('修改成功！', U('index'));
             };
         }else{
+            $data = M('@@tablenoprfixname@@')->where(array('id' => $id))->find();
+            $this->data = $data;
             $this->display();
         }
     }

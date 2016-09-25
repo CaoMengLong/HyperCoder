@@ -60,8 +60,38 @@ hcApp.controller('TableCtrl', ['$scope',
                 FieldNameArray:$scope.fieldNameArray,
                 ParamsStr:$scope.fieldNameParamsStr
             }
-            if(mold="OTC"){
+            if(mold=="OTC"){
                 thinkPHPFactory.getControllerCode(data).then(function(data){
+                    //AceEditor.clean();
+                    AceEditor.setValue(data);
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                });
+            }
+            if(mold=="OTVINDEX"){
+                thinkPHPFactory.getViewIndexCode(data).then(function(data){
+                    AceEditor.setValue(data);
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                });
+            }
+
+            if(mold=="OTVADD"){
+                thinkPHPFactory.getViewAddCode(data).then(function(data){
+                    AceEditor.setValue(data);
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                    AceEditor.gotoPageUp();
+                });
+            }
+
+            if(mold=="OTVEDIT"){
+                thinkPHPFactory.getViewEditCode(data).then(function(data){
                     AceEditor.setValue(data);
                     AceEditor.gotoPageUp();
                     AceEditor.gotoPageUp();
@@ -78,6 +108,7 @@ hcApp.controller('TableCtrl', ['$scope',
             _editor.setReadOnly(false);
             _editor.getSession().setUseWrapMode(true);
             _editor.renderer.setShowGutter(true);
+
             AceEditor=_editor;
 
         };
