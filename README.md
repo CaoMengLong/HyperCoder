@@ -8,7 +8,7 @@
 - **得心应手** ：简洁高效的编辑器，灵活简易的操作，一键生成各种代码。跨平台支持可以在 Windows , MacOS , Linux 系统中运行；
 - **深度整合** ：支持多种编程语言代码生成，拥有各种常用框架的代码自动生成功能。
 
-![HyperCoder](http://7xj380.com1.z0.glb.clouddn.com/hypercoderani.gif)
+![HyperCoder](https://github.com/CaoMengLong/HyperCoder/raw/master/Public/images/hypercoderani.gif)
 -------------------
 
 
